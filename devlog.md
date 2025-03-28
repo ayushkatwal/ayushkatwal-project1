@@ -28,4 +28,4 @@ I am nearing completion of writing the initial code, but will still need to debu
 
 3/28	3:20 PM
 
-I had to wrap up the session, but after about 30 minutes of thinking through the logic for how to do main I finally got started with writing it. I wrote the prompt for interactive mode, got the reading of user input done, and when the user enters quit the program will terminate. I also added evaluating input using error handlers in this session. I am nearing completion of the code and plan to do so next session.
+I had to wrap up the session, but after about 30 minutes of thinking through the logic for how to do main I finally got started with writing it. I wrote the prompt for interactive mode, got the reading of user input done, and when the user enters quit the program will terminate. I also added evaluating input using error handlers in this session. I am nearing completion of the code and plan to do so next session. In addition I also made sure to add comments explaining what certain parts of my code do so other users will be able to analyze it easier. It also helps me go through my thinking process.
