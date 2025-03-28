@@ -24,3 +24,8 @@ I have finished the evaluate function which can now handle all cases of possible
 3/28	2:14 PM
 
 I am nearing completion of writing the initial code, but will still need to debug. During this session I will write the main function of the code that will handle looping for user input and calling the evaluate function. I plan to finish this in the session but may have to end the session early. 
+
+
+3/28	3:20 PM
+
+I had to wrap up the session, but after about 30 minutes of thinking through the logic for how to do main I finally got started with writing it. I wrote the prompt for interactive mode, got the reading of user input done, and when the user enters quit the program will terminate. I also added evaluating input using error handlers in this session. I am nearing completion of the code and plan to do so next session.
