@@ -81,3 +81,25 @@
           
           ;; invalid tokens. if any unwanted tokens such as 'a' appear show error message
           [else (error "Invalid Expression")]))))
+
+
+;; main function (read-eval-print loop)
+(define (main history)
+  
+  ;; if interactive mode, display prompt
+  (when prompt? (display "Enter prefix notation"))
+  (flush-output)
+
+  ;; read line from user
+  (let ([input (read-line)])
+    (cond
+      ;; if user inputs quit, exit program
+      [(eof-object? input) (exit)]
+      [(string=? (string-trim input) "quit") (exit)]
+      ;; evaluate input safely using error handlers
+      [else
+       (with-handlers ([exn:fail?
+                        (λ (err)
+                          (when prompt? (display "Error: "))
+                          (displayln "Invalid Expression")
+                          (main history))])
