@@ -87,7 +87,7 @@
 (define (main history)
   
   ;; if interactive mode, display prompt
-  (when prompt? (display "Enter prefix notation"))
+  (when prompt? (display "Enter prefix notation:"))
   (flush-output)
 
   ;; read line from user
@@ -102,4 +102,26 @@
                         (λ (err)
                           (when prompt? (display "Error: "))
                           (displayln "Invalid Expression")
-                          (main history))]) 
+                          (main history))])
+
+          ;; call tokenize function to tokenize input and evaluate expression
+         (let* ([tokens (tokenize input)]
+                [result-and-remaining-tokens (evaluate tokens history)]
+                [result (car result-and-remaining-tokens)]
+                [remaining-tokens (cadr result-and-remaining-tokens)])
+           ;; if all tokens are used print the result and store in history
+           (if (null? remaining-tokens)
+               (let ([id (+ 1 (length history))])
+                 (display id)
+                 (display ": ")
+                 (displayln (real->double-flonum result))
+                 (main (cons result history)))
+               
+               ;; if there are unused tokens, input is invalid so show error message
+               (begin
+                 (when prompt? (display "Error: "))
+                 (displayln "Invalid Expression")
+                 (main history)))))])))
+
+;; run the program
+(main '())
