@@ -29,6 +29,55 @@
   (if (null? tokens)
       (error "Invalid Expression")
       (let ([token (car tokens)]
-            [rest (cdr tokens)]) 
+            [remaining-tokens (cdr tokens)]) 
         (cond
-  
+          
+          ;;  history ($n)
+          [(and (positive? (string-length token)) (char=? (string-ref token 0) #\$))
+           (let* ([str (substring token 1)]
+                  [num (string->number str)])
+             ;; check if history value exists, if it doesnt then display an error message
+             (if (and num (integer? num))
+                 (list (history-value history num) remaining-tokens)
+                 (error "Invalid Expression")))]
+
+          ;; number
+          [(string->number token)
+           => (λ (num) (list num remaining-tokens))]
+          
+          ;; negation (-)
+          [(string=? token "-")
+           (let* ([val-remaining-tokens (evaluate remaining-tokens history)]
+                  [val (car val-remaining-tokens)]
+                  [next (cadr val-remaining-tokens)])
+             (list (- val) next))]
+          
+          ;; addition (+)
+          [(string=? token "+")
+           (let* ([left (evaluate remaining-tokens history)]
+                  [left-val (car left)]
+                  [right (evaluate (cadr left) history)]
+                  [right-val (car right)] )
+             (list (+ left-val right-val) (cadr right)))]
+          
+          ;; multiplication (*)
+          [(string=? token "*")
+           (let* ([left (evaluate remaining-tokens history)]
+                  [left-val (car left)]
+                  [right (evaluate (cadr left) history)]
+                  [right-val (car right)])
+             (list (* left-val right-val) (cadr right)))]
+          
+          ;; division (/)
+          [(string=? token "/")
+           (let* ([left (evaluate remaining-tokens history)]
+                  [left-val (car left)]
+                  [right (evaluate (cadr left) history)]
+                  [right-val (car right)])
+             ;; dividing by 0 results in error
+             (if (zero? right-val)
+                 (error "Invalid Expression")
+                 (list (quotient left-val right-val) (cadr right))))]
+          
+          ;; invalid tokens. if any unwanted tokens such as 'a' appear show error message
+          [else (error "Invalid Expression")]))))
