@@ -38,3 +38,8 @@ I will finish the main function and handle all the debugging in this session, I 
 3/28	6:55 PM
 
 I finished writing the main function and the code is complete. I ran the code with minimal errors due to the main function I wrote. I tweaked the code a little and was able to start on test cases. All the test cases I provided in the previous devlog entry were used and the code I wrote produced the desired results. I will wrap up this session and come back to it at the end to see if there is anything else I can do before submission.
+
+
+3/28	8:05 PM
+
+For my final session I will write a README.md file to explain how to run the code and will be prepared to make final submissions. I will also try to make the racket code a little more readable as personally I feel like it is hard to read. Once these two things are done I will submit the project.
