@@ -1,5 +1,6 @@
 #lang racket
 
+
 ;; function provided by Professor Salazar to let program run either batch or interactive
 (define prompt?
    (let [(args (current-command-line-arguments))]
