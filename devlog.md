@@ -43,3 +43,8 @@ I finished writing the main function and the code is complete. I ran the code wi
 3/28	8:05 PM
 
 For my final session I will write a README.md file to explain how to run the code and will be prepared to make final submissions. I will also try to make the racket code a little more readable as personally I feel like it is hard to read. Once these two things are done I will submit the project.
+
+
+3/28	8:22 PM
+
+README.md file completed and racket code adjusted to be a little more readable. Fully prepared for project submission.
